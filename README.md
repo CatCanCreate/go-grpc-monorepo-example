@@ -20,3 +20,7 @@
 ### Линтер:
 1) `cd shippy-service-consignment`
 2) `golangci-lint run`
+
+
+### Альтернатива cli - https://github.com/ktr0731/evans
+1) `evans proto/consignment/consignment.proto -p 50051` - REPL mode
