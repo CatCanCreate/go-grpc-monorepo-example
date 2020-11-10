@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -41,6 +42,9 @@ func main() {
 	}
 	defer conn.Close()
 	client := pb.NewShippingServiceClient(conn)
+
+	userId := "test"
+	fmt.Println(userId)
 
 	// Contact the server and print out its response.
 	file := defaultFilename

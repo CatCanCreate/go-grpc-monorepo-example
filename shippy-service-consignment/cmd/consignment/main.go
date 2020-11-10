@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 
@@ -26,6 +27,9 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	userId := "test"
+	fmt.Println(userId)
 
 	s := grpc.NewServer()
 
