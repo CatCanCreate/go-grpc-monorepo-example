@@ -43,8 +43,8 @@ func main() {
 	defer conn.Close()
 	client := pb.NewShippingServiceClient(conn)
 
-	userId := "test"
-	fmt.Println(userId)
+	userID := "test"
+	fmt.Println(userID)
 
 	// Contact the server and print out its response.
 	file := defaultFilename
