@@ -28,8 +28,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	userId := "test"
-	fmt.Println(userId)
+	userID := "test"
+	fmt.Println(userID)
 
 	s := grpc.NewServer()
 
