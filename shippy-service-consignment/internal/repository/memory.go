@@ -6,6 +6,7 @@ import (
 	pb "shippy-service-consignment/proto/consignment"
 )
 
+// Репозиторий для работы с хранилищем.
 type InMemoryRepository struct {
 	mu           sync.RWMutex
 	consignments []*pb.Consignment

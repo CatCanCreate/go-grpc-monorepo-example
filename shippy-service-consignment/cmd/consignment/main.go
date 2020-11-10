@@ -6,6 +6,7 @@ import (
 
 	"google.golang.org/grpc"
 
+	"shippy-service-consignment/internal/grpchandler"
 	"shippy-service-consignment/internal/repository"
 	"shippy-service-consignment/internal/service"
 	pb "shippy-service-consignment/proto/consignment"
@@ -18,6 +19,7 @@ const (
 func main() {
 	inMemoryRepository := repository.NewInMemoryRepository()
 	shippingService := service.NewService(&inMemoryRepository)
+	shippingServer := grpchandler.NewServer(shippingService)
 
 	//nolint:gosec
 	lis, err := net.Listen("tcp", port)
@@ -27,7 +29,7 @@ func main() {
 
 	s := grpc.NewServer()
 
-	pb.RegisterShippingServiceServer(s, &shippingService)
+	pb.RegisterShippingServiceServer(s, &shippingServer)
 
 	log.Println("Running on port:", port)
 

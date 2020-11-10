@@ -7,21 +7,21 @@ import (
 )
 
 // Необходимый интерфейс для сервисного слоя.
-type Repository interface {
+type ConsignmentRepository interface {
 	Create(consignment *pb.Consignment) (*pb.Consignment, error)
 	GetAll() []*pb.Consignment
 }
 
-type Service struct {
-	repo Repository
+type Consignment struct {
+	repo ConsignmentRepository
 }
 
-// Сервис, реализующий gRPC интерфейс.
-func NewService(r Repository) Service {
-	return Service{repo: r}
+// Сервис, реализующий бизнес логику.
+func NewService(r ConsignmentRepository) Consignment {
+	return Consignment{repo: r}
 }
 
-func (s *Service) CreateConsignment(_ context.Context, req *pb.Consignment) (*pb.Response, error) {
+func (s *Consignment) CreateConsignment(_ context.Context, req *pb.Consignment) (*pb.Response, error) {
 	consignment, err := s.repo.Create(req)
 	if err != nil {
 		return nil, err
@@ -30,7 +30,7 @@ func (s *Service) CreateConsignment(_ context.Context, req *pb.Consignment) (*pb
 	return &pb.Response{Created: true, Consignment: consignment}, nil
 }
 
-func (s *Service) GetConsignments(_ context.Context, _ *pb.GetRequest) (*pb.Response, error) {
+func (s *Consignment) GetConsignments(_ context.Context, _ *pb.GetRequest) (*pb.Response, error) {
 	consignments := s.repo.GetAll()
 	return &pb.Response{Consignments: consignments}, nil
 }
