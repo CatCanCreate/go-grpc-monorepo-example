@@ -9,7 +9,7 @@ on:
   pull_request:
 jobs:
   consignment-cli:
-    name: lint
+    name: lint-consignment-cli
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
 
 
   consignment-service:
-    name: lint
+    name: lint-consignment-service
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
