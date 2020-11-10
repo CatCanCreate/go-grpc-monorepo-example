@@ -17,7 +17,7 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           version: v1.32.2
-            working-directory: shippy-cli-consignment
+          working-directory: shippy-cli-consignment
 
 
   consignment-service:
@@ -29,5 +29,5 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           version: v1.32.2
-            working-directory: shippy-service-consignment
+          working-directory: shippy-service-consignment
 
